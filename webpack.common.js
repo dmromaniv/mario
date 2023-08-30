@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -12,6 +11,16 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: "asset/resource",
       },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
     ],
   },
   plugins: [
@@ -20,13 +29,6 @@ module.exports = {
       favicon: "./src/assets/mario-ico.ico",
     }),
   ],
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        exclude: /node_modules/,
-      }),
-    ],
-  },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
