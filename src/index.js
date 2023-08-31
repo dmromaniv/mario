@@ -1,14 +1,4 @@
-import { Application } from "pixi.js";
+import Game from './Game';
 
-class Game {
-  constructor() {
-    this.app = new Application();
-    this.createApp();
-  }
-
-  createApp() {
-    document.body.appendChild(this.app.view);
-  }
-}
-
-new Game();
+const game = new Game();
+game.createApp();

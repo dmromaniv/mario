@@ -1,0 +1,14 @@
+{
+   "extends": ["airbnb-base", "prettier"],
+   "rules": {
+      "no-new": 1,
+      "no-undef": 0,
+      "import/no-extraneous-dependencies": [
+         "error",
+         {
+            "devDependencies": true
+         }
+      ]
+   },
+   "ignorePatterns": ["dist/", "node_modules/"]
+}
